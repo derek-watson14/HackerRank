@@ -10,7 +10,6 @@ function minimumSwaps(arr) {
       arr[i] = correctVal;
       minSwaps++;
     }
-    console.log(arr);
   }
 
   return minSwaps;
