@@ -29,3 +29,4 @@ const testArr = [
 ];
 
 console.log(hourglassSum(testArr));
+// 19
