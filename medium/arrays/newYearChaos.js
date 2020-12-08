@@ -22,8 +22,6 @@ function minimumBribes(q) {
 const testStateA = [1, 2, 5, 3, 7, 8, 6, 4];
 const testStateB = [5, 1, 2, 3, 7, 8, 6, 4];
 
-const origStateX = [1, 2, 3, 4, 5, 6, 7, 8];
-
 console.log(minimumBribes(testStateA));
 // 7
 
