@@ -1,7 +1,7 @@
 // https://www.hackerrank.com/challenges/special-palindrome-again/problem
 
 // ! TOO SLOW
-function substrCount(n, s) {
+function substrCountOld(n, s) {
   let count = n;
   for (let i = 2; i <= n; i++) {
     for (let j = 0; j <= n - i; j++) {
@@ -20,6 +20,40 @@ function substrCount(n, s) {
     }
   }
   return count;
+}
+
+// Python answer translated to JS
+function substrCount(n, s) {
+  const tups = [];
+  let count = 0;
+  let cur = null;
+
+  for (let i = 0; i < n; i++) {
+    if (s[i] === cur) {
+      count += 1;
+    } else {
+      if (cur) {
+        tups.push([cur, count]);
+      }
+      cur = s[i];
+      count = 1;
+    }
+  }
+  tups.push([cur, count]);
+
+  let answer = 0;
+
+  tups.forEach((tup) => {
+    answer += Math.floor((tup[1] * (tup[1] + 1)) / 2);
+  });
+
+  for (let i = 1; i < tups.length - 1; i++) {
+    if (tups[i - 1][0] === tups[i + 1][0] && tups[i][1] === 1) {
+      answer += Math.min(tups[i - 1][1], tups[i + 1][1]);
+    }
+  }
+
+  return answer;
 }
 
 const testN = 8;
