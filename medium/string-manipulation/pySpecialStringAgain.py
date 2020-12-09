@@ -13,12 +13,12 @@ def substrCount(n, s):
             cur = s[i]
             count = 1
     l.append((cur, count))
-    count = 0
+    answer = 0
 		
 # 2nd pass: count all the non-palindrome single strings
     for i in l:
         # Counts # of single letter palindromes produced per tuple in l
-        count += (i[1] * (i[1] + 1)) // 2
+        answer += (i[1] * (i[1] + 1)) // 2
 
 # 3rd pass: count special palindrome strings with a single char in middle
     for i in range(1, len(l) - 1):
@@ -26,9 +26,9 @@ def substrCount(n, s):
         if l[i - 1][0] == l[i + 1][0] and l[i][1] == 1:
             # the # of additional SS this creates is the lower count of
             # the two matching char counts on either side
-            count += min(l[i - 1][1], l[i + 1][1])
+            answer += min(l[i - 1][1], l[i + 1][1])
 
-    return count
+    return answer
 
 testN = 8
 testS = 'mnonopoo'
