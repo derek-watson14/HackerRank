@@ -16,12 +16,12 @@ def seconds_to_formatted(seconds):
   seconds = raw_secs if raw_secs > 9 else "0" + str(raw_secs)
   return Time(minutes, seconds)
 
-def convert_time(time, distance, convert_to):
+def convert_time(time, distance, mode):
   time_in_sec = time_to_seconds(time)
-  if convert_to == "time":
-    converted_seconds = round(float(distance) * time_in_sec)
-  else:
+  if mode[1] == "Total time":
     converted_seconds = round(time_in_sec / float(distance))
+  else:
+    converted_seconds = round(float(distance) * time_in_sec)
   return seconds_to_formatted(converted_seconds)
 
 def result_string(unit, mode, converted):
