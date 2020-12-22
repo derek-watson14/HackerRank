@@ -1,4 +1,11 @@
 # Convert a pace + distance to total time or time + distance to pace
+class UserInput:
+  def __init__(self, unit, mode, time, distance):
+    self.unit = unit
+    self.mode = mode
+    self.time = time
+    self.distance = distance
+
 class Time:
   def __init__(self, minutes, seconds):
     self.minutes = minutes
@@ -46,12 +53,13 @@ def get_user_input():
   print(f"\n~> Input time and distance:\nFormat: {mode[1]}: mm:ss | Distance: x.x")
   time = input(f"{mode[1]}: ")
   distance = input(f"Distance ({unit[1]}s): ")
-  converted = convert_time(time, distance, mode)
-  print(result_string(unit, mode, converted))
-
+  return UserInput(unit, mode, time, distance)
 
 def main():
-  get_user_input()
+  u_input = get_user_input()
+  converted = convert_time(u_input.time, u_input.distance, u_input.mode)
+  print(result_string(u_input.unit, u_input.mode, converted))
+
 
 if __name__ == "__main__":
   main()
