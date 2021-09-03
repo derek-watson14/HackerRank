@@ -1,11 +1,6 @@
 # https://www.hackerrank.com/challenges/most-commons/problem
 #!/bin/python3
 
-import math
-import os
-import random
-import re
-import sys
 from collections import Counter
 
 
@@ -24,6 +19,7 @@ def logo_letters(s):
         else:
             l_dict[l] = 1
     l_li = sorted(l_dict.items(), key=lambda e: (e[1]), reverse=True)
+
     grouped = []
     current_letter = l_li[0][1]
     current_group = []
